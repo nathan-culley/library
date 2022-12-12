@@ -25,16 +25,34 @@ function addBook(title, author, pages, read) {
     console.table(myLibrary);
 }
 
+addBook("The Hobbit", "J.R.R. Tolkien", 250, true);
+addBook("Dune", "Frank Herbert", 400, true);
+
 function displayLibrary(myLibrary) {
-    const library = document.getElementById("library-list");
-    while (library.firstChild) {
-        library.removeChild(library.firstChild);
-    }
+    const libraryTable = document.getElementById("library-table")
     for (let item of myLibrary) {
-        const node = document.createElement("li");
-        console.log(item.info());
-        const textNode = document.createTextNode(item.info());
-        node.appendChild(textNode);
-        library.appendChild(node);
+        const row = document.createElement("tr");
+        libraryTable.appendChild(row);
+        const titleNode = document.createElement("td");
+        const titleText = document.createTextNode(item.title);
+        titleNode.appendChild(titleText);
+        console.log(item.title);
+        const authorNode = document.createElement("td");
+        const authorText = document.createTextNode(item.author);
+        authorNode.appendChild(authorText);
+        console.log(item.author);
+        const pagesNode = document.createElement("td");
+        const pagesText = document.createTextNode(item.pages);
+        pagesNode.appendChild(pagesText);
+        console.log(item.pages);
+        const readNode = document.createElement("td");
+        const readText = document.createTextNode(item.read);
+        readNode.appendChild(readText);
+        console.log(item.read);
+        row.appendChild(titleNode);
+        row.appendChild(authorNode);
+        row.appendChild(pagesNode);
+        row.appendChild(readNode);
+        
     }
 }
