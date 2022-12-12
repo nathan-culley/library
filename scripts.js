@@ -59,9 +59,9 @@ const inputUnread = document.querySelector("#input-unread");
 const submitBook = document.querySelector("#submit-book");
 
 submitBook.addEventListener('click', (event) => {
-    let isRead = false;
+    let isRead = 'No';
     if (inputRead.checked == true) {
-        isRead = true;
+        isRead = 'Yes';
     }
     addBook(inputTitle.value,inputAuthor.value,inputPages.value,isRead);
     displayNewBook(myLibrary);
