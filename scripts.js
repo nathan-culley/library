@@ -24,3 +24,14 @@ function addBook(title, author, pages, read) {
     myLibrary.push(newBook);
     console.table(myLibrary);
 }
+
+function displayLibrary(myLibrary) {
+    const library = document.getElementById("library-list");
+    for (let item of myLibrary) {
+        const node = document.createElement("li");
+        console.log(item.info());
+        const textNode = document.createTextNode(item.info());
+        node.appendChild(textNode);
+        library.appendChild(node);
+    }
+}
