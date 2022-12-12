@@ -31,3 +31,5 @@ function displayLibrary(myLibrary) {
         libraryTable.appendChild(row);
     }
 }
+
+displayLibrary(myLibrary);
