@@ -8,8 +8,24 @@
     <title>Document</title>
 </head>
 <body>
+    <h2>My Library</h2>
+    <div id="add-book">
+        <label for="input-title">Title</label>
+        <input type="text" id="input-title" name="input-title">
+        <label for="input-author">Author</label>
+        <input type="text" id="input-author" name="input-author">
+        <label for="input-pages">Number of Pages</label>
+        <input type="text" id="input-pages" name="input-pages">
+        <fieldset>
+            <label for="input-read">Read</label>
+            <input type="radio" id="input-read">
+            <label for="input-unread">Unread</label>
+            <input type="radio" id="input-unread">
+        </fieldset>
+        <button id="submit-book">Add Book</button>
+    </div>
     <div id="display">
-        <h2>My Library</h2>
+
         <table id="library-table">
             <tr>
                 <th>Title</th>
@@ -22,3 +38,5 @@
     <script src="./scripts.js"></script>
 </body>
 </html>
+
+<!-- Add a “NEW BOOK” button that brings up a form allowing users to input the details for the new book: author, title, number of pages, whether it’s been read and anything else you might want. You will most likely encounter an issue where submitting your form will not do what you expect it to do. That’s because the submit input tries to send the data to a server by default. If you’ve done the bonus section for the calculator assignment, you might be familiar with event.preventDefault();. Read up on the event.preventDefault documentation again and see how you can solve this issue! -->

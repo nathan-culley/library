@@ -33,3 +33,32 @@ function displayLibrary(myLibrary) {
 }
 
 displayLibrary(myLibrary);
+
+function displayNewBook(myLibrary) {
+    const libraryTable = document.getElementById("library-table")
+    const row = document.createElement("tr")
+    let item = myLibrary[myLibrary.length - 1];
+    for (let prop in item) {
+        console.log(item[prop]);
+        const node = document.createElement("td");
+        const textNode = document.createTextNode(item[prop]);
+        node.appendChild(textNode);
+        row.appendChild(node);
+    }
+    libraryTable.appendChild(row);
+}
+
+const inputTitle = document.querySelector("#input-title");
+const inputAuthor = document.querySelector("#input-author");
+const inputPages = document.querySelector("#input-pages");
+const inputRead = document.querySelector("#input-read");
+const inputUnread = document.querySelector("#input-unread");
+const submitBook = document.querySelector("#submit-book");
+
+submitBook.addEventListener('click', (event) => {
+    console.log("hello");
+    addBook(inputTitle.value,inputAuthor.value,inputPages.value,inputRead.value);
+    displayNewBook(myLibrary);
+})
+
+// Add a “NEW BOOK” button that brings up a form allowing users to input the details for the new book: author, title, number of pages, whether it’s been read and anything else you might want. You will most likely encounter an issue where submitting your form will not do what you expect it to do. That’s because the submit input tries to send the data to a server by default. If you’ve done the bonus section for the calculator assignment, you might be familiar with event.preventDefault();. Read up on the event.preventDefault documentation again and see how you can solve this issue!
