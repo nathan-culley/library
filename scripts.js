@@ -27,6 +27,9 @@ function addBook(title, author, pages, read) {
 
 function displayLibrary(myLibrary) {
     const library = document.getElementById("library-list");
+    while (library.firstChild) {
+        library.removeChild(library.firstChild);
+    }
     for (let item of myLibrary) {
         const node = document.createElement("li");
         console.log(item.info());
