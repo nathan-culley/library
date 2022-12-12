@@ -45,6 +45,9 @@ function displayNewBook(myLibrary) {
         node.appendChild(textNode);
         row.appendChild(node);
     }
+    const deleteBook = document.createElement("button");
+    deleteBook.innerHTML = "Delete Book";
+    row.appendChild(deleteBook);
     libraryTable.appendChild(row);
 }
 
