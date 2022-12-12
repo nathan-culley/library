@@ -1,10 +1,10 @@
 let myLibrary = [];
 
-function Book(title, author, pages) {
+function Book(title, author, pages, read) {
     this.title = title;
     this.author = author;
     this.pages = pages;
-    this.read = false;
+    this.read = read;
     this.info = function() {
         let readMessage;
         if (this.read == false) {
@@ -19,19 +19,8 @@ function Book(title, author, pages) {
     }
 }
 
-/* function info(bookTitle) {
-    if (bookTitle.read == false) {
-        let readMessage = "not read yet.";
-    }
-    else {
-        let readMessage = "already read.";
-    }
-
-    let message = bookTitle.title + " " + "by " + bookTitle.author + ", " + pages + " pages, " + readMessage;
-    return message;
-} */
-
-function addBooktoLibrary(newBook, title, author, pages) {
-    newBook = new Book(title, author, pages);
-    console.log(newBook);    
+function addBook(title, author, pages, read) {
+    let newBook = new Book(title, author, pages, read);
+    myLibrary.push(newBook);
+    console.table(myLibrary);
 }
