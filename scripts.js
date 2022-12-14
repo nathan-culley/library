@@ -97,6 +97,8 @@ function addToggleFunction(toggleRead) {
             selectedBook.read = 'No';
         }
         //update display
+        let readDisplay = toggleRead.parentElement.previousElementSibling;
+        readDisplay.innerHTML = selectedBook.read;
     })
 }
 
