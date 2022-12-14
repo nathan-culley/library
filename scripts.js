@@ -36,20 +36,21 @@ function addBook(title, author, pages, read) {
 
 function displayNewBook(myLibrary) {
     const libraryTable = document.getElementById("library-table")
-    const bookIndex = new String("index" + myLibrary.length);
+    const bookIndex = new String(myLibrary.length - 1);
     const row = document.createElement("tr");
-    row.setAttribute('class',bookIndex);
+    // row.setAttribute('class',bookIndex);
     let item = myLibrary[myLibrary.length - 1];
     for (let prop in item) {
         console.log(item[prop]);
         const node = document.createElement("td");
         const textNode = document.createTextNode(item[prop]);
         node.appendChild(textNode);
-        node.setAttribute('class',bookIndex);
+        // node.setAttribute('class',bookIndex);
         row.appendChild(node);
     }
     const deleteBook = document.createElement("button");
     deleteBook.setAttribute('class',bookIndex);
+    addDeleteFunction(deleteBook);
     deleteBook.innerHTML = "Delete Book";
     row.appendChild(deleteBook);
     libraryTable.appendChild(row);
@@ -71,6 +72,14 @@ submitBook.addEventListener('click', (event) => {
     displayNewBook(myLibrary);
 })
 
+function addDeleteFunction(deleteButton) {
+    deleteButton.addEventListener('click', (event) => {
+        //delete entry from myLibrary
 
-
-// Add a “NEW BOOK” button that brings up a form allowing users to input the details for the new book: author, title, number of pages, whether it’s been read and anything else you might want. You will most likely encounter an issue where submitting your form will not do what you expect it to do. That’s because the submit input tries to send the data to a server by default. If you’ve done the bonus section for the calculator assignment, you might be familiar with event.preventDefault();. Read up on the event.preventDefault documentation again and see how you can solve this issue!
+        //delete data from table
+        let parent = deleteButton.parentElement;
+        while (parent.firstChild) {
+            parent.removeChild(parent.firstChild);
+        }
+    })
+}
