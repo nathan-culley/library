@@ -20,14 +20,16 @@ function addBook(title, author, pages, read) {
 function displayNewBook(myLibrary) {
     const libraryTable = document.getElementById("library-table");
     const row = document.createElement("tr");
-    // row.setAttribute('class',bookIndex);
     let item = myLibrary[myLibrary.length - 1];
     for (let prop in item) {
+        //exclude bookIndex from being displayed in the table
+        if (prop == 'bookIndex') {
+            continue;
+        }
         console.log(item[prop]);
         const node = document.createElement("td");
         const textNode = document.createTextNode(item[prop]);
         node.appendChild(textNode);
-        // node.setAttribute('class',bookIndex);
         row.appendChild(node);
     }
     const deleteBook = document.createElement("button");
