@@ -1,42 +1,24 @@
 let myLibrary = [];
+let bookCounter = 0;
 
 function Book(title, author, pages, read) {
     this.title = title;
     this.author = author;
     this.pages = pages;
     this.read = read;
+    this.bookIndex;
 }
 
 function addBook(title, author, pages, read) {
     let newBook = new Book(title, author, pages, read);
     myLibrary.push(newBook);
+    newBook.bookIndex = bookCounter;
+    bookCounter = bookCounter + 1;
     console.table(myLibrary);
 }
 
-// addBook("The Hobbit", "J.R.R. Tolkien", 250, true);
-// addBook("Dune", "Frank Herbert", 400, true);
-
-// function displayLibrary(myLibrary) {
-//     const libraryTable = document.getElementById("library-table")
-//     for (let item of myLibrary) {
-//         const row = document.createElement("tr");
-//         console.log(item);
-//         for (let prop in item) {
-//             console.log(item[prop]);
-//             const node = document.createElement("td");
-//             const textNode = document.createTextNode(item[prop]);
-//             node.appendChild(textNode);
-//             row.appendChild(node);
-//         }
-//         libraryTable.appendChild(row);
-//     }
-// }
-
-// displayLibrary(myLibrary);
-
 function displayNewBook(myLibrary) {
-    const libraryTable = document.getElementById("library-table")
-    const bookIndex = new String(myLibrary.length - 1);
+    const libraryTable = document.getElementById("library-table");
     const row = document.createElement("tr");
     // row.setAttribute('class',bookIndex);
     let item = myLibrary[myLibrary.length - 1];
@@ -49,7 +31,7 @@ function displayNewBook(myLibrary) {
         row.appendChild(node);
     }
     const deleteBook = document.createElement("button");
-    deleteBook.setAttribute('class',bookIndex);
+    deleteBook.setAttribute('bookIndex',item.bookIndex);
     addDeleteFunction(deleteBook);
     deleteBook.innerHTML = "Delete Book";
     row.appendChild(deleteBook);
@@ -75,7 +57,8 @@ submitBook.addEventListener('click', (event) => {
 function addDeleteFunction(deleteButton) {
     deleteButton.addEventListener('click', (event) => {
         //delete entry from myLibrary
-
+        let selectedIndex = deleteButton.getAttribute('bookIndex');
+        myLibrary.splice(selectedIndex, 1);
         //delete data from table
         let parent = deleteButton.parentElement;
         while (parent.firstChild) {
@@ -83,3 +66,11 @@ function addDeleteFunction(deleteButton) {
         }
     })
 }
+
+function indexBooks(newBook, bookCounter) {
+    newBook.bookIndex = bookCounter;
+    ++bookCounter;
+}
+
+
+//create some sort of "updateIndex" function that gives each entry in the array an "index" property that matches its position in the array, then use that to set where to delete books from myLibrary. Otherwise, every time you delete a book, the index of all books added after it will be off by 1.
