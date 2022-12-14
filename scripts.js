@@ -32,11 +32,20 @@ function displayNewBook(myLibrary) {
         node.appendChild(textNode);
         row.appendChild(node);
     }
+    const toggleColumn = document.createElement("td");
+    const deleteColumn = document.createElement("td");
+    const toggleRead = document.createElement("button");
+    toggleRead.setAttribute('bookIndex',item.bookIndex);
+    addToggleFunction(toggleRead);
+    toggleRead.innerHTML = "Toggle Read";
+    toggleColumn.appendChild(toggleRead);
     const deleteBook = document.createElement("button");
     deleteBook.setAttribute('bookIndex',item.bookIndex);
     addDeleteFunction(deleteBook);
     deleteBook.innerHTML = "Delete Book";
-    row.appendChild(deleteBook);
+    deleteColumn.appendChild(deleteBook);
+    row.appendChild(toggleColumn);
+    row.appendChild(deleteColumn);
     libraryTable.appendChild(row);
 }
 
@@ -62,10 +71,27 @@ function addDeleteFunction(deleteButton) {
         let selectedIndex = deleteButton.getAttribute('bookIndex');
         myLibrary.splice(selectedIndex, 1);
         //delete data from table
-        let parent = deleteButton.parentElement;
-        while (parent.firstChild) {
-            parent.removeChild(parent.firstChild);
+        let grandParent = deleteButton.parentElement.parentElement;
+        while (grandParent.firstChild) {
+            grandParent.removeChild(grandParent.firstChild);
         }
+    })
+}
+
+function addToggleFunction(toggleRead) {
+    toggleRead.addEventListener('click', (event) => {
+        let selectedIndex = toggleRead.getAttribute('bookIndex');
+        let selectedBook;
+        //access the selected book in myLibrary
+        // for (let item of myLibrary) {
+        //     if (item[bookIndex] == selectedIndex) {
+        //         selectedBook = item;
+        //     }
+        // }
+        console.log(selectedBook.title);
+        //update object property
+
+        //update display
     })
 }
 
