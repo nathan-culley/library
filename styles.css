@@ -1,3 +1,12 @@
 table, th, td {
     border: black solid 1px;
 }
+
+#add-book {
+    display: flex;
+    flex-direction: column;
+}
+
+.new-book {
+    width: 300px;
+}

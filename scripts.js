@@ -84,7 +84,6 @@ function addToggleFunction(toggleRead) {
         let selectedBook;
         //access the selected book in myLibrary
         for (let item of myLibrary) {
-            console.log(item);
             if (item.bookIndex == selectedIndex) {
                 selectedBook = item;
             }
