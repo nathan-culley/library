@@ -83,14 +83,19 @@ function addToggleFunction(toggleRead) {
         let selectedIndex = toggleRead.getAttribute('bookIndex');
         let selectedBook;
         //access the selected book in myLibrary
-        // for (let item of myLibrary) {
-        //     if (item[bookIndex] == selectedIndex) {
-        //         selectedBook = item;
-        //     }
-        // }
-        console.log(selectedBook.title);
+        for (let item of myLibrary) {
+            console.log(item);
+            if (item.bookIndex == selectedIndex) {
+                selectedBook = item;
+            }
+        }
         //update object property
-
+        if (selectedBook.read == 'No') {
+            selectedBook.read = 'Yes';
+        }
+        else {
+            selectedBook.read = 'No';
+        }
         //update display
     })
 }
